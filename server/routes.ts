@@ -11,7 +11,7 @@ const JIKAN_BASE_URL = "https://api.jikan.moe/v4";
 async function fetchWithDelay(url: string) {
   try {
     // Add delay to respect rate limiting
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
     const response = await axios.get(url);
     return response.data;
   } catch (error: any) {
@@ -100,7 +100,7 @@ export async function registerRoutes(app: Express) {
       const animeData = await fetchWithDelay(`${JIKAN_BASE_URL}/anime/${malId}/full`);
 
       // Wait before making the second request
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
       // Then fetch episodes
       const episodesData = await fetchWithDelay(`${JIKAN_BASE_URL}/anime/${malId}/episodes`);
