@@ -3,13 +3,14 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "pnpm"
-    },
-    {
-      "src": "dist/**",
-      "use": "@vercel/static"
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     }
   ],
+  "buildCommand": "npm install && npm run build",
+  "startCommand": "npm start",
   "routes": [
     {
       "src": "/(.*)",
